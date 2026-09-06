@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+<div class="app">
+
+    <!-- Header -->
+ <header class="header">
+
+
+<!-- Title on the left -->
+<div class="brand-text">
+    <h1>Smart Parking</h1>
+    <p>Find and reserve your parking slot</p>
+</div>
+
+<!-- Parking visual in the center -->
+<div class="parking-visual">
+    <img src="parking-visual.png" alt="Smart Parking">
+</div>
+
+<!-- Controls on the right -->
+<div class="header-actions">
+
+    <button id="theme-toggle" class="theme-toggle">
+        🌙 Dark Mode
+    </button>
+
+    <div class="available-badge" id="available-count">
+        Available Slots: 10 / 10
+    </div>
+
+</div>
+
+
+</header>
+
+
+    <!-- Main Content -->
+    <main class="dashboard">
+
+        <!-- Left Section -->
+        <section class="parking-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Parking Slots</h2>
+                    <p>Select a slot to reserve or release</p>
+                </div>
+
+                <div class="filters">
+                    <button id="show-available">Available Slots</button>
+                    <button id="show-all">All Slots</button>
+                </div>
+            </div>
+
+
+            <!-- Success / Error Message -->
+            <p id="message"></p>
+
+            <!-- Selected Slot -->
+            <div id="last-selected"></div>
+
+
+            <!-- Parking Slots -->
+            <div id="parking-container"></div>
+
+        </section>
+
+
+        <!-- Right Section -->
+        <aside class="history-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Parking History</h2>
+                    <p>Recent parking activity</p>
+                </div>
+            </div>
+
+            <div id="history-container"></div>
+
+        </aside>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
