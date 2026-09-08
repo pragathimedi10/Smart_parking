@@ -8,7 +8,7 @@ let allSlots=[];
 
 async function loadSlots() {
 
-    const response = await fetch("http://localhost:3000/api/slots");
+    const response = await fetch("https://smart-parking-hi4o.onrender.com/api/slots");
     const slots = await response.json();
     allSlots=slots;
 
@@ -46,9 +46,9 @@ async function loadSlots() {
             let url;
 
             if (slotData.status === "Available") {
-                url = `http://localhost:3000/api/slots/${slotData.id}/reserve`;
+                url = `https://smart-parking-hi4o.onrender.com/api/slots/${slotData.id}/reserve`;
             } else {
-                url = `http://localhost:3000/api/slots/${slotData.id}/release`;
+                url = `https://smart-parking-hi4o.onrender.com/api/slots/${slotData.id}/release`;
             }
 
             const response = await fetch(url, {
@@ -85,7 +85,7 @@ async function loadSlots() {
 }
 
 async function loadHistory() {
-const response = await fetch("http://localhost:3000/api/history");
+const response = await fetch("https://smart-parking-hi4o.onrender.com/api/history");
 const history = await response.json();
 
 
@@ -163,7 +163,7 @@ function showAvailableSlots() {
         button.addEventListener("click", async function () {
 
             const response = await fetch(
-                `http://localhost:3000/api/slots/${slotData.id}/reserve`,
+                `https://smart-parking-hi4o.onrender.com/api/slots/${slotData.id}/reserve`,
                 {
                     method: "POST"
                 }
