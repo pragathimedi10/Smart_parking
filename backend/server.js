@@ -8,7 +8,6 @@ const app = express();
 
 app.use(cors());
 
-const PORT = 3000;
 
 // Database connection
 const db = mysql.createConnection({
@@ -170,6 +169,6 @@ app.get("/api/history", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
