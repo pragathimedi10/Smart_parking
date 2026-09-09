@@ -436,7 +436,7 @@ body.dark-mode .theme-toggle {
     .header {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 15px;
+        gap: 55px;
     }
 
     .brand-text {
