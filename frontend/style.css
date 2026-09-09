@@ -418,11 +418,20 @@ body.dark-mode .theme-toggle {
         width: 60px;
         height: 45px;
     }
-
+    
     .header-actions {
-        justify-content: flex-end;
-        flex-wrap: wrap;
-    }
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1001;
+}
+
+.theme-toggle {
+    position: relative;
+    z-index: 1002;
+    pointer-events: auto;
+}
 }
 
 /* Smaller Mobile Screens */
@@ -460,6 +469,20 @@ body.dark-mode .theme-toggle {
     #parking-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .header-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1001;
+}
+
+.theme-toggle {
+    position: relative;
+    z-index: 1002;
+    pointer-events: auto;
+}
 }
 
 
