@@ -57,6 +57,52 @@
                     <p>Select a slot to reserve or release</p>
                 </div>
 
+            <!-- AI Parking Assistant -->
+<div class="chatbot-container">
+
+    <button id="chatbot-toggle" class="chatbot-toggle">
+        🤖 AI Assistant
+    </button>
+
+    <div id="chatbot-window" class="chatbot-window hidden">
+
+        <div class="chatbot-header">
+            <div>
+                <h3>AI Parking Assistant</h3>
+                <p>Ask me about your parking slots!</p>
+            </div>
+
+            <button id="chatbot-close" aria-label="Close chatbot">
+                &times;
+            </button>
+        </div>
+
+        <div id="chatbot-messages" class="chatbot-messages">
+            <div class="bot-message">
+                Hi! 👋 I'm your AI Parking Assistant.
+                Ask me about available slots, occupied slots,
+                or recent parking activity.
+            </div>
+        </div>
+
+        <form id="chatbot-form" class="chatbot-form">
+            <input
+                type="text"
+                id="chatbot-input"
+                placeholder="Ask about parking..."
+                maxlength="1000"
+                required
+            >
+
+            <button type="submit" id="chatbot-send">
+                Send
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
                 <div class="filters">
                     <button id="show-available">Available Slots</button>
                     <button id="show-all">All Slots</button>

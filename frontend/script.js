@@ -219,6 +219,117 @@ if (localStorage.getItem("theme") === "dark") {
 }
 
 
+// =========================
+// AI PARKING ASSISTANT
+// =========================
+
+const chatbotToggle = document.getElementById("chatbot-toggle");
+const chatbotWindow = document.getElementById("chatbot-window");
+const chatbotClose = document.getElementById("chatbot-close");
+const chatbotForm = document.getElementById("chatbot-form");
+const chatbotInput = document.getElementById("chatbot-input");
+const chatbotMessages = document.getElementById("chatbot-messages");
+const chatbotSend = document.getElementById("chatbot-send");
+
+// Your deployed backend URL
+const CHATBOT_API_URL = "https://smart-parking-hi4o.onrender.com/api/chat";
+
+// Open chatbot
+chatbotToggle.addEventListener("click", () => {
+chatbotWindow.classList.toggle("hidden");
+
+
+if (!chatbotWindow.classList.contains("hidden")) {
+    chatbotInput.focus();
+}
+
+
+});
+
+// Close chatbot
+chatbotClose.addEventListener("click", () => {
+chatbotWindow.classList.add("hidden");
+});
+
+// Display a message safely
+function addChatMessage(message, sender) {
+const messageElement = document.createElement("div");
+
+
+messageElement.className =
+    sender === "user" ? "user-message" : "bot-message";
+
+messageElement.textContent = message;
+
+chatbotMessages.appendChild(messageElement);
+chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+return messageElement;
+
+
+}
+
+// Send question to backend
+chatbotForm.addEventListener("submit", async (event) => {
+event.preventDefault();
+
+
+const question = chatbotInput.value.trim();
+
+if (!question) return;
+
+addChatMessage(question, "user");
+
+chatbotInput.value = "";
+chatbotSend.disabled = true;
+chatbotInput.disabled = true;
+
+const loadingMessage = addChatMessage(
+    "Thinking... 🤖",
+    "bot"
+);
+
+try {
+    const response = await fetch(CHATBOT_API_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: question
+        })
+    });
+
+    const data = await response.json();
+
+    loadingMessage.remove();
+
+    if (!response.ok) {
+        throw new Error(
+            data.message || "The AI assistant couldn't respond."
+        );
+    }
+
+    addChatMessage(data.reply, "bot");
+
+} catch (error) {
+    loadingMessage.remove();
+
+    console.error("Chatbot error:", error);
+
+    addChatMessage(
+        "Sorry, I couldn't connect to the AI assistant. Please try again.",
+        "bot"
+    );
+
+} finally {
+    chatbotSend.disabled = false;
+    chatbotInput.disabled = false;
+    chatbotInput.focus();
+}
+
+
+});
 
 
 
